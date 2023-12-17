@@ -1,0 +1,28 @@
+Features:
+
+- Distance sensor goal is to acitvte the lights when a certain distance is undercut
+- infared sensor that activates the motor to the garage door when a thing passes/ is in the range defined
+- temperature, preasure, humidity inside the garage is measured
+- maybe manual opening of the garage door through a button on the Sensehat (one push button so it opens complettly after a short press)
+- display something on the display (maybe a message that the door is open)
+
+Online data:
+- display the data of humidity, preasure, temperature on a website
+- also if the door is open or closed and if the lambs are on or of
+
+
+1. measure the temp, pres, hum in cetain time spans
+- at the end a function "get_hum" for example gives back the number of the current hum and so on
+- the time spans can get set by the main funktion
+
+main.py
+
+in this file the main code is run. This contains the active measuring of the temp every 20 s
+and the constant ceck if the light or distance sensor are triggering an action
+also the upload to the cloud is made hear
+
+- plan there is a constant check for the light and distance sensor (thread)
+- every 30s the weather class is exicuted
+
+- first impliment the 30s weather thread
+

@@ -1,0 +1,33 @@
+import RPi.GPIO as GPIO
+import time
+
+# GPIO-Pin am Raspberry Pi
+sig_pin = 17
+
+# GPIO-Setup
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(sig_pin, GPIO.IN)
+
+try:
+    while True:
+        # Warte, bis der Signal-Pin auf HIGH geht
+        while GPIO.input(sig_pin) == 0:
+            pulse_start = time.time()
+
+        # Warte, bis der Signal-Pin auf LOW geht
+        while GPIO.input(sig_pin) == 1:
+            pulse_end = time.time()
+
+        # Berechne die Dauer des Signal-Impulses
+        pulse_duration = pulse_end - pulse_start
+
+        # Berechne die Entfernung anhand der Schallgeschwindigkeit (343 m/s)
+        distance = pulse_duration * 17150
+
+        print("Entfernung: {:.2f} cm".format(distance))
+        time.sleep(1)
+
+except KeyboardInterrupt:
+    print("Programm durch Benutzer unterbrochen")
+finally:
+    GPIO.cleanup()
